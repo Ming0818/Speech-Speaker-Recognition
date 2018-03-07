@@ -1,0 +1,7 @@
+In corpus/data/train and corpus/data/train train data and test data are to be given in the required format respectively
+
+Format is spk2utt,utt2spk,text,wav.scp should be kept correctly
+
+in corpus/lang dict containing lexicon.txt, silent_phones.txt, non_silence.txt should be kept
+
+In corpus/lm language model text file should be kept 

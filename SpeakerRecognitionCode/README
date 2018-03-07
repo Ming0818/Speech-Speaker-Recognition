@@ -1,0 +1,19 @@
+
+Extract dev-clean in an external directory
+Keep the extracted files in LibriSpeech
+i.e download dev_clean.tar.gz(or some other from LibriSpeech)
+Extarct it there
+Open the extracted folder
+Copy everything into Librispeech in this and folder in this place and run 
+
+
+
+#################################
+1) Run mover.py (python3)
+2) Run test_creator.py (python3)
+###############################
+
+
+Above two should be run in that orderbefore running below models
+Run HMM_Model.py (python3) for HMM model
+Run Nnet_Model.py (python3) for nnet model

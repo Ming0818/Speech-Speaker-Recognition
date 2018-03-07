@@ -1,0 +1,280 @@
+Preparing data and training language models
+Preparing train and test data
+Copy spk2utt, utt2spk, wav.scp, text for train
+fix_data_dir.sh: kept all      250 utterances.
+fix_data_dir.sh: old files are kept in data/train/.backup
+Copy spk2utt, utt2spk, wav.scp, text for dev
+fix_data_dir.sh: kept all       30 utterances.
+fix_data_dir.sh: old files are kept in data/dev/.backup
+Data preparation completed.
+Dictionary preparation succeeded
+utils/prepare_lang.sh data/local/dict <UNK> data/local/lang data/lang
+Checking data/local/dict/silence_phones.txt ...
+--> reading data/local/dict/silence_phones.txt
+--> data/local/dict/silence_phones.txt is OK
+
+Checking data/local/dict/optional_silence.txt ...
+--> reading data/local/dict/optional_silence.txt
+--> data/local/dict/optional_silence.txt is OK
+
+Checking data/local/dict/nonsilence_phones.txt ...
+--> reading data/local/dict/nonsilence_phones.txt
+--> data/local/dict/nonsilence_phones.txt is OK
+
+Checking disjoint: silence_phones.txt, nonsilence_phones.txt
+--> disjoint property is OK.
+
+Checking data/local/dict/lexicon.txt
+--> reading data/local/dict/lexicon.txt
+--> data/local/dict/lexicon.txt is OK
+
+Checking data/local/dict/lexiconp.txt
+--> reading data/local/dict/lexiconp.txt
+--> data/local/dict/lexiconp.txt is OK
+
+Checking lexicon pair data/local/dict/lexicon.txt and data/local/dict/lexiconp.txt
+--> lexicon pair data/local/dict/lexicon.txt and data/local/dict/lexiconp.txt match
+
+Checking data/local/dict/extra_questions.txt ...
+--> data/local/dict/extra_questions.txt is empty (this is OK)
+--> SUCCESS [validating dictionary directory data/local/dict]
+
+fstaddselfloops data/lang/phones/wdisambig_phones.int data/lang/phones/wdisambig_words.int 
+prepare_lang.sh: validating output directory
+utils/validate_lang.pl data/lang
+Checking data/lang/phones.txt ...
+--> data/lang/phones.txt is OK
+
+Checking words.txt: #0 ...
+--> data/lang/words.txt is OK
+
+Checking disjoint: silence.txt, nonsilence.txt, disambig.txt ...
+--> silence.txt and nonsilence.txt are disjoint
+--> silence.txt and disambig.txt are disjoint
+--> disambig.txt and nonsilence.txt are disjoint
+--> disjoint property is OK
+
+Checking sumation: silence.txt, nonsilence.txt, disambig.txt ...
+--> summation property is OK
+
+Checking data/lang/phones/context_indep.{txt, int, csl} ...
+--> 5 entry/entries in data/lang/phones/context_indep.txt
+--> data/lang/phones/context_indep.int corresponds to data/lang/phones/context_indep.txt
+--> data/lang/phones/context_indep.csl corresponds to data/lang/phones/context_indep.txt
+--> data/lang/phones/context_indep.{txt, int, csl} are OK
+
+Checking data/lang/phones/nonsilence.{txt, int, csl} ...
+--> 136 entry/entries in data/lang/phones/nonsilence.txt
+--> data/lang/phones/nonsilence.int corresponds to data/lang/phones/nonsilence.txt
+--> data/lang/phones/nonsilence.csl corresponds to data/lang/phones/nonsilence.txt
+--> data/lang/phones/nonsilence.{txt, int, csl} are OK
+
+Checking data/lang/phones/silence.{txt, int, csl} ...
+--> 5 entry/entries in data/lang/phones/silence.txt
+--> data/lang/phones/silence.int corresponds to data/lang/phones/silence.txt
+--> data/lang/phones/silence.csl corresponds to data/lang/phones/silence.txt
+--> data/lang/phones/silence.{txt, int, csl} are OK
+
+Checking data/lang/phones/optional_silence.{txt, int, csl} ...
+--> 1 entry/entries in data/lang/phones/optional_silence.txt
+--> data/lang/phones/optional_silence.int corresponds to data/lang/phones/optional_silence.txt
+--> data/lang/phones/optional_silence.csl corresponds to data/lang/phones/optional_silence.txt
+--> data/lang/phones/optional_silence.{txt, int, csl} are OK
+
+Checking data/lang/phones/disambig.{txt, int, csl} ...
+--> 10 entry/entries in data/lang/phones/disambig.txt
+--> data/lang/phones/disambig.int corresponds to data/lang/phones/disambig.txt
+--> data/lang/phones/disambig.csl corresponds to data/lang/phones/disambig.txt
+--> data/lang/phones/disambig.{txt, int, csl} are OK
+
+Checking data/lang/phones/roots.{txt, int} ...
+--> 35 entry/entries in data/lang/phones/roots.txt
+--> data/lang/phones/roots.int corresponds to data/lang/phones/roots.txt
+--> data/lang/phones/roots.{txt, int} are OK
+
+Checking data/lang/phones/sets.{txt, int} ...
+--> 35 entry/entries in data/lang/phones/sets.txt
+--> data/lang/phones/sets.int corresponds to data/lang/phones/sets.txt
+--> data/lang/phones/sets.{txt, int} are OK
+
+Checking data/lang/phones/extra_questions.{txt, int} ...
+--> 9 entry/entries in data/lang/phones/extra_questions.txt
+--> data/lang/phones/extra_questions.int corresponds to data/lang/phones/extra_questions.txt
+--> data/lang/phones/extra_questions.{txt, int} are OK
+
+Checking data/lang/phones/word_boundary.{txt, int} ...
+--> 141 entry/entries in data/lang/phones/word_boundary.txt
+--> data/lang/phones/word_boundary.int corresponds to data/lang/phones/word_boundary.txt
+--> data/lang/phones/word_boundary.{txt, int} are OK
+
+Checking optional_silence.txt ...
+--> reading data/lang/phones/optional_silence.txt
+--> data/lang/phones/optional_silence.txt is OK
+
+Checking disambiguation symbols: #0 and #1
+--> data/lang/phones/disambig.txt has "#0" and "#1"
+--> data/lang/phones/disambig.txt is OK
+
+Checking topo ...
+
+Checking word_boundary.txt: silence.txt, nonsilence.txt, disambig.txt ...
+--> data/lang/phones/word_boundary.txt doesn't include disambiguation symbols
+--> data/lang/phones/word_boundary.txt is the union of nonsilence.txt and silence.txt
+--> data/lang/phones/word_boundary.txt is OK
+
+Checking word-level disambiguation symbols...
+--> data/lang/phones/wdisambig.txt exists (newer prepare_lang.sh)
+Checking word_boundary.int and disambig.int
+--> generating a 58 word sequence
+--> resulting phone sequence from L.fst corresponds to the word sequence
+--> L.fst is OK
+--> generating a 8 word sequence
+--> resulting phone sequence from L_disambig.fst corresponds to the word sequence
+--> L_disambig.fst is OK
+
+Checking data/lang/oov.{txt, int} ...
+--> 1 entry/entries in data/lang/oov.txt
+--> data/lang/oov.int corresponds to data/lang/oov.txt
+--> data/lang/oov.{txt, int} are OK
+
+--> data/lang/L.fst is olabel sorted
+--> data/lang/L_disambig.fst is olabel sorted
+--> SUCCESS [validating lang directory data/lang]
+local/train_lms_srilm.sh --train-text data/train/text data/ data/srilm
+-------------------------------------
+Building an SRILM language model     
+-------------------------------------
+Using words file: data//lang/words.txt
+Using train text: 9/10 of data/train/text
+Using dev text  : 1/10 of data/train/text
+vocab contains 36351 lines, 0 words
+Removed first word (uid) from every line of data/srilm/train_text
+data/srilm/train_text contains 5228 words, 225 sentences
+train.txt contains 5228 words, 225 sentences
+Removed first word (uid) from every line of data/srilm/dev_text
+data/srilm/dev_text contains 525 words, 25 sentences
+data/srilm/dev.txt contains 525 words, 25 sentences
+------------------------
+Building language models
+------------------------
+--------------------
+Computing perplexity
+--------------------
+data/srilm/2gram.kn01.gz  file  data/srilm/dev.txt:  25  sentences,  525  words,  0  OOVs  0  zeroprobs,  logprob=  -1465.888  ppl=  462.6486  ppl1=  619.6808
+data/srilm/2gram.kn02.gz  file  data/srilm/dev.txt:  25  sentences,  525  words,  0  OOVs  0  zeroprobs,  logprob=  -1536.443  ppl=  621.6312  ppl1=  844.4194
+The perlexity scores report is stored in data/srilm/perplexities.txt 
+local/train_lms_srilm.sh --train-text data/local/external_text data/ data/srilm_external
+-------------------------------------
+Building an SRILM language model     
+-------------------------------------
+Using words file: data//lang/words.txt
+Using train text: 9/10 of data/local/external_text
+Using dev text  : 1/10 of data/local/external_text
+vocab contains 36351 lines, 0 words
+Removed first word (uid) from every line of data/srilm_external/train_text
+data/srilm_external/train_text contains 1874316 words, 72322 sentences
+train.txt contains 1801995 words, 72322 sentences
+Removed first word (uid) from every line of data/srilm_external/dev_text
+data/srilm_external/dev_text contains 208136 words, 8035 sentences
+data/srilm_external/dev.txt contains 200101 words, 8035 sentences
+------------------------
+Building language models
+------------------------
+--------------------
+Computing perplexity
+--------------------
+data/srilm_external/2gram.kn01.gz  file  data/srilm_external/dev.txt:  8035  sentences,  200101  words,  0  OOVs  0  zeroprobs,  logprob=  -449572    ppl=  144.5412  ppl1=  176.4922
+data/srilm_external/2gram.kn02.gz  file  data/srilm_external/dev.txt:  8035  sentences,  200101  words,  0  OOVs  0  zeroprobs,  logprob=  -456266.5  ppl=  155.6523  ppl1=  190.6255
+The perlexity scores report is stored in data/srilm_external/perplexities.txt 
+local/arpa2G.sh data/srilm/lm.gz data/lang_test data/lang_test
+arpa2fst - 
+LOG (arpa2fst[5.1.      34-bd23]:Read():arpa-file-parser.cc:96) Reading \data\ section.
+LOG (arpa2fst[5.1.      34-bd23]:Read():arpa-file-parser.cc:151) Reading \1-grams: section.
+LOG (arpa2fst[5.1.      34-bd23]:Read():arpa-file-parser.cc:151) Reading \2-grams: section.
+fstisstochastic data/lang_test/G.fst 
+3.23854e-05 -0.169831
+steps/make_mfcc.sh --nj 4 --cmd run.pl data/train exp/make_mfcc/train mfcc
+steps/make_mfcc.sh: moving data/train/feats.scp to data/train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for train
+steps/compute_cmvn_stats.sh --fake data/train exp/make_mfcc/train mfcc
+feat-to-dim scp:data/train/feats.scp - 
+copy-matrix ark:- ark,scp:/Users/pjyothi/Documents/Software/kaldi/egs/assgn2/recipe/mfcc/cmvn_train.ark,/Users/pjyothi/Documents/Software/kaldi/egs/assgn2/recipe/mfcc/cmvn_train.scp 
+LOG (copy-matrix[5.1.      34-bd23]:main():copy-matrix.cc:93) Copied 17 matrices.
+Succeeded creating CMVN stats for train
+steps/make_mfcc.sh --nj 4 --cmd run.pl data/dev exp/make_mfcc/dev mfcc
+steps/make_mfcc.sh: moving data/dev/feats.scp to data/dev/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/dev
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for dev
+steps/compute_cmvn_stats.sh --fake data/dev exp/make_mfcc/dev mfcc
+feat-to-dim scp:data/dev/feats.scp - 
+copy-matrix ark:- ark,scp:/Users/pjyothi/Documents/Software/kaldi/egs/assgn2/recipe/mfcc/cmvn_dev.ark,/Users/pjyothi/Documents/Software/kaldi/egs/assgn2/recipe/mfcc/cmvn_dev.scp 
+LOG (copy-matrix[5.1.      34-bd23]:main():copy-matrix.cc:93) Copied 6 matrices.
+Succeeded creating CMVN stats for dev
+Monophone training
+steps/train_mono.sh --nj 4 --cmd run.pl data/train data/lang exp/mono
+steps/train_mono.sh: Initializing monophone system.
+steps/train_mono.sh: Compiling training graphs
+steps/train_mono.sh: Aligning data equally (pass 0)
+steps/train_mono.sh: Pass 1
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 2
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 3
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 4
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 5
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 6
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 7
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 8
+steps/train_mono.sh: Aligning data
+steps/train_mono.sh: Pass 9
+steps/train_mono.sh: Aligning data
+steps/diagnostic/analyze_alignments.sh --cmd run.pl data/lang exp/mono
+steps/diagnostic/analyze_alignments.sh: see stats in exp/mono/log/analyze_alignments.log
+52 warnings in exp/mono/log/acc.*.*.log
+593 warnings in exp/mono/log/align.*.*.log
+75 warnings in exp/mono/log/update.*.log
+steps/train_mono.sh: line 144: steps/info/gmm_dir_info.pl: No such file or directory
+steps/train_mono.sh: Done training monophone system in exp/mono
+Monophone training complete
+Triphone training
+Decoding the dev set using monophone models.
+tree-info exp/mono/tree 
+tree-info exp/mono/tree 
+fstpushspecial 
+fstminimizeencoded 
+fstdeterminizestar --use-log=true 
+fsttablecompose data/lang_test/L_disambig.fst data/lang_test/G.fst 
+WARNING (fsttablecompose[5.1.      34-bd23]:main():fsttablecompose.cc:132) The second FST is not ilabel sorted.
+fstisstochastic data/lang_test/tmp/LG.fst 
+-0.00587294 -0.00651152
+fstcomposecontext --context-size=1 --central-position=0 --read-disambig-syms=data/lang_test/phones/disambig.int --write-disambig-syms=data/lang_test/tmp/disambig_ilabels_1_0.int data/lang_test/tmp/ilabels_1_0.4635 
+fstisstochastic data/lang_test/tmp/CLG_1_0.fst 
+-0.00587294 -0.00651152
+make-h-transducer --disambig-syms-out=exp/mono/graph/disambig_tid.int --transition-scale=1.0 data/lang_test/tmp/ilabels_1_0 exp/mono/tree exp/mono/final.mdl 
+fsttablecompose exp/mono/graph/Ha.fst data/lang_test/tmp/CLG_1_0.fst 
+fstdeterminizestar --use-log=true 
+fstminimizeencoded 
+fstrmepslocal 
+fstrmsymbols exp/mono/graph/disambig_tid.int 
+fstisstochastic exp/mono/graph/HCLGa.fst 
+0.000305727 -0.0126953
+HCLGa is not stochastic
+add-self-loops --self-loop-scale=0.1 --reorder=true exp/mono/final.mdl 
+steps/decode.sh --config conf/decode.config --nj 4 --cmd run.pl exp/mono/graph data/dev exp/mono/decode_dev
+decode.sh: feature type is delta
+steps/diagnostic/analyze_lats.sh --cmd run.pl exp/mono/graph exp/mono/decode_dev
+steps/diagnostic/analyze_lats.sh: see stats in exp/mono/decode_dev/log/analyze_alignments.log
+Overall, lattice depth (10,50,90-percentile)=(1,18,95) and mean=40.8
+steps/diagnostic/analyze_lats.sh: see stats in exp/mono/decode_dev/log/analyze_lattice_depth_stats.log
+local/score.sh --cmd run.pl data/dev exp/mono/graph exp/mono/decode_dev
+local/score.sh: scoring with word insertion penalty=0.0,0.5,1.0
+Monophone decoding done.
+%WER 60.75 [ 113 / 186, 2 in , 40 del, 71  ub ] exp/mono/decode_dev/wer_14_0.0
